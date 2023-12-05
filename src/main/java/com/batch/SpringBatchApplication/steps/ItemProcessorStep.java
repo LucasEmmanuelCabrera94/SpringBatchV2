@@ -1,6 +1,7 @@
 package com.batch.SpringBatchApplication.steps;
 
 import com.batch.SpringBatchApplication.entities.Person;
+import lombok.NonNull;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class ItemProcessorStep implements Tasklet {
     @Override
-    public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
+    public RepeatStatus execute(@NonNull StepContribution contribution, ChunkContext chunkContext) throws Exception {
 
         List<Person> personList = (List<Person>)chunkContext.getStepContext()
                 .getStepExecution()

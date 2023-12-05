@@ -1,19 +1,15 @@
 package com.batch.SpringBatchApplication.configurations;
 
-import com.batch.SpringBatchApplication.entities.Person;
 import com.batch.SpringBatchApplication.steps.ItemDescompressStep;
 import com.batch.SpringBatchApplication.steps.ItemProcessorStep;
 import com.batch.SpringBatchApplication.steps.ItemReaderStep;
 import com.batch.SpringBatchApplication.steps.ItemWriterStep;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.job.builder.JobBuilder;
-import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -78,5 +74,4 @@ public class BatchConfig {
                 .next(writeFileStep(jobRepository, transactionManager))
                 .build();
     }
-
 }

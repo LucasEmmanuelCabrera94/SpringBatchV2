@@ -2,13 +2,13 @@ package com.batch.SpringBatchApplication.steps;
 
 import com.batch.SpringBatchApplication.entities.Person;
 import com.batch.SpringBatchApplication.services.IPersonService;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.config.Task;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class ItemWriterStep implements Tasklet {
     private IPersonService personService;
 
     @Override
-    public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
+    public RepeatStatus execute(@NonNull StepContribution contribution, ChunkContext chunkContext) throws Exception {
 
         List<Person> personList = (List<Person>)chunkContext.getStepContext()
                 .getStepExecution()

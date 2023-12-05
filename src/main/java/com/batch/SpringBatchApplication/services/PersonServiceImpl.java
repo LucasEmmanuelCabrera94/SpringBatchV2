@@ -18,4 +18,9 @@ public class PersonServiceImpl implements IPersonService {
     public void saveAll(List<Person> personList) {
         personRepository.saveAll(personList);
     }
+
+    @Override
+    public List<Person> getAll() {
+        return (List<Person>) personRepository.findAll();
+    }
 }

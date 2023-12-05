@@ -2,7 +2,6 @@ package com.batch.SpringBatchApplication.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
-import org.springframework.batch.core.JobParameter;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
@@ -25,7 +24,7 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/v2")
 public class BatchController {
 
     @Autowired
@@ -66,4 +65,31 @@ public class BatchController {
             throw new RuntimeException();
         }
     }
+
+/*    @GetMapping("/getFile")
+    public ResponseEntity<?> returnFile(){
+
+        try {
+            log.info("------------------Inicio de proceso Batch ----------------------");
+
+            JobParameters jobParameter = new JobParametersBuilder()
+                    .addDate("date", new Date()) //para diferenciar los jobs
+                    .toJobParameters();
+
+            jobLauncher.run(job, jobParameter);
+
+            log.info("------------------Finalizacion de proceso Batch ----------------------");
+
+            Map<String, String> response = new HashMap<>();
+            //response.put("fileName", fileName);
+            response.put("status", "received");
+
+            return ResponseEntity.ok(response);
+
+        } catch (Exception e){
+            log.error("Error al iniciar el proceso Batch, Error {}", e.getMessage());
+            throw new RuntimeException();
+        }
+    }
+*/
 }
